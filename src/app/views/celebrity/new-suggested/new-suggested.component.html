@@ -1,0 +1,147 @@
+<div class="breadcrumb">
+    <h1>Famosos</h1>
+    <ul>
+        <li><a href="">Sugeridos</a></li>
+        <li>Nuevo</li>
+    </ul>
+</div>
+
+<div class="separator-breadcrumb border-top"></div>
+
+<div class="row">
+    <form [formGroup]="formBasic" (ngSubmit)="submit()">
+
+    <div class="col-md-12">
+        <input
+          #imageUpload
+          hidden
+          type="file"
+          id="fileupload"
+          #imageUpload
+          (change)="imageUploadEvent($event)"
+          accept="image/gif, image/jpeg, image/png"
+        />
+        <button
+                class="btn btn-primary"
+                type="button"
+                (click)="imageUpload.click()"
+        >Cargar foto</button>
+        <image-cropper (getImage)="getImage($event)" [src]="croppieImage"></image-cropper>
+    </div>
+    <div class="col-md-12">
+        <div class="card mb-4">
+            <div class="card-body">
+                <div class="card-title mb-3">Form Inputs</div>
+                    <div class="row">
+                        <div class="col-md-6 form-group mb-3">
+                            <label for="name">Nombre</label>
+                            <input type="text" class="form-control" formControlName="nombre" id="name" placeholder="Enter name">
+                        </div>
+
+                        <div class="col-md-6 form-group mb-3">
+                            <label for="exampleInputEmail1">Correo</label>
+                            <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp"
+                                   formControlName="email" placeholder="Enter email">
+                        </div>
+
+                        <div class="col-md-6 form-group mb-3">
+                            <label for="phone">Teléfono</label>
+                            <input class="form-control" id="phone" formControlName="telefono" placeholder="Enter phone">
+                        </div>
+
+                        <div class="col-md-6 form-group mb-3">
+                            <label for="instagram">Instagram</label>
+                            <input class="form-control" id="instagram" formControlName="instagram" placeholder="Instagram">
+                        </div>
+
+                        <div class="col-md-6 form-group mb-3">
+                            <label for="facebook">Facebook</label>
+                            <input class="form-control" id="facebook" formControlName="facebook" placeholder="Facebook">
+                        </div>
+
+                        <div class="col-md-6 form-group mb-3">
+                            <label for="twitter">Twitter</label>
+                            <input class="form-control" id="twitter" formControlName="twitter" placeholder="Twitter">
+                        </div>
+
+                        <div class="col-md-6 form-group mb-3">
+                            <label for="youtube">Youtube</label>
+                            <input class="form-control" id="youtube" formControlName="youtube" placeholder="Youtube">
+                        </div>
+
+                        <div class="col-md-12">
+                            <btn-loading btnClass="btn-primary btn-rounded" [loading]="loading">Submit</btn-loading>
+                        </div>
+                    </div>
+            </div>
+        </div>
+    </div>
+    </form>
+</div>
+
+<div>
+<div class="row">
+    <div class="col-md-4">
+        <div class="form-group">
+            <input id="email" placeholder="Search Products" [formControl]="searchControl" class="form-control form-control-rounded" type="email">
+        </div>
+    </div>
+    <div class="col-md-12">
+        <div class="card  o-hidden">
+            <ngx-datatable
+                    style="height: 500px; box-shadow: none"
+                    class="material fullscreen"
+                    [columnMode]="'force'"
+                    [headerHeight]="50"
+                    [footerHeight]="50"
+                    [rowHeight]="60"
+                    [scrollbarV]="true"
+                    [rows]="filteredProducts | async">
+                <ngx-datatable-column name="avatar" [maxWidth]="120">
+                    <ng-template ngx-datatable-header-template>
+                        Avatar
+                    </ng-template>
+                    <ng-template ngx-datatable-cell-template let-value="value" let-row="row">
+                        <img height="32px" width="32px" style="border-radius: 4px" [src]="value" alt="">
+                    </ng-template>
+                </ngx-datatable-column>
+                <ngx-datatable-column name="nombre" [width]="300">
+                    <ng-template ngx-datatable-header-template>
+                        Nombre
+                    </ng-template>
+                </ngx-datatable-column>
+                <ngx-datatable-column name="email">
+                    <ng-template ngx-datatable-header-template>
+                        Email
+                    </ng-template>
+                </ngx-datatable-column>
+                <ngx-datatable-column name="telefono">
+                    <ng-template ngx-datatable-header-template>
+                        Teléfono
+                    </ng-template>
+                </ngx-datatable-column>
+                <ngx-datatable-column name="instagram">
+                    <ng-template ngx-datatable-header-template>
+                        Description
+                    </ng-template>
+                </ngx-datatable-column>
+                <ngx-datatable-column name="twitter">
+                    <ng-template ngx-datatable-header-template>
+                        Instagram
+                    </ng-template>
+                </ngx-datatable-column>
+                <ngx-datatable-column name="facebook">
+                    <ng-template ngx-datatable-header-template>
+                        Facebook
+                    </ng-template>
+                </ngx-datatable-column>
+                <ngx-datatable-column name="youtube">
+                    <ng-template ngx-datatable-header-template>
+                        Youtube
+                    </ng-template>
+                </ngx-datatable-column>
+            </ngx-datatable>
+        </div>
+    </div>
+</div>
+</div>
