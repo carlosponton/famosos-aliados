@@ -55,13 +55,13 @@ export class NavigationService {
             icon: 'i-Bar-Chart',
             state: '/dashboard/default',
         },
-        {
+        /*{
             name: 'Lista de famosos',
             description: 'Lorem ipsum dolor sit amet, consectetur adipisicing.',
             type: 'link',
             state: '/celebrity/list',
             icon: 'i-Library',
-        },
+        },*/
         {
             name: 'Famosos sugeridos',
             description: 'Lorem ipsum dolor sit amet, consectetur adipisicing.',
@@ -69,7 +69,7 @@ export class NavigationService {
             state: '/celebrity/suggested',
             icon: 'i-File-Clipboard-File--Text',
         },
-        {
+        /*{
             name: 'Mi estado de cuenta',
             description: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit.',
             type: 'dropDown',
@@ -80,7 +80,7 @@ export class NavigationService {
                 { icon: 'i-Speach-Bubble-3', name: 'Transacciones', state: '/details-accounts/transactions', type: 'link' },
                 { icon: 'i-Calendar', name: 'Ranking famosos', state: '/details-accounts/ranking', type: 'link' },
             ]
-        },
+        },*/
     ];
 
 
