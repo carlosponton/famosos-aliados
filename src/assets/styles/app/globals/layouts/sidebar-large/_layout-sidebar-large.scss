@@ -61,7 +61,7 @@
                     text-align: center;
                 }
                 &.active {
-                    color: $primary;
+                    color: $pink !important;
                 }
                 .nav-item-hold {
                     width: 100%;
@@ -93,7 +93,7 @@
                     bottom: 0;
                     border-style: solid;
                     border-width: 0 0 30px 30px;
-                    border-color: transparent transparent $primary transparent;
+                    border-color: transparent transparent #ED217C transparent;
                 }
             }
         }
