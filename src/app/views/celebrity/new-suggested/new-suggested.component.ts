@@ -5,6 +5,7 @@ import {CelebrityService} from '../../../shared/services/celebrity.service';
 import {Router} from '@angular/router';
 import {Subject} from 'rxjs';
 import {debounceTime} from 'rxjs/operators';
+import {AuthService} from '../../../shared/services/auth.service';
 
 @Component({
   selector: 'app-new-suggested',
@@ -25,6 +26,7 @@ export class NewSuggestedComponent implements OnInit {
       private toastr: ToastrService,
       private famousService: CelebrityService,
       private router: Router,
+      private authService: AuthService
   ) { }
 
   ngOnInit() {
@@ -95,12 +97,18 @@ export class NewSuggestedComponent implements OnInit {
         const responsePhoto = this.famousService.uploadPhoto(this.photo);
         responsePhoto.newRef.then(() => {
             responsePhoto.ref.getDownloadURL().subscribe(avatar => {
-                const response = this.famousService.addSuggestion(
-                    {...this.formBasic.value, avatar}
-                );
-                response.then(res => {
-                    this.loading = false;
-                    this.toastr.success('Famoso sugerido.', 'Success!', {progressBar: true});
+                this.authService.getuser().then(value => {
+                    let allyId = '';
+                    value.forEach(document => {
+                        allyId = document.id;
+                    });
+                    const response = this.famousService.addSuggestion(
+                        {...this.formBasic.value, avatar, ally_id: allyId}
+                    );
+                    response.then(res => {
+                        this.loading = false;
+                        this.toastr.success('Famoso sugerido.', 'Success!', {progressBar: true});
+                    });
                 });
             });
         });
@@ -118,7 +126,7 @@ export class NewSuggestedComponent implements OnInit {
             return;
         }
 
-        const rows = this.products.filter(function(d) {
+        this.filteredProducts = this.products.filter(function(d) {
             for (let i = 0; i <= columns.length; i++) {
                 const column = columns[i];
                 // console.log(d[column]);
@@ -127,6 +135,5 @@ export class NewSuggestedComponent implements OnInit {
                 }
             }
         });
-        this.filteredProducts = rows;
     }
 }

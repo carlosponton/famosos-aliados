@@ -19,7 +19,8 @@ export class CelebrityService {
         return this.famousCollection;
     }
     addSuggestion(suggested) {
-        return this.famousCollection.add(suggested);
+        const id = this.db.createId();
+        return this.famousCollection.doc(id).set({id, ...suggested});
     }
     uploadPhoto(img): any {
         const filePath = 'famosos/' + new Date().getTime() + '.jpg';

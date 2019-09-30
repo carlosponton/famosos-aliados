@@ -4,6 +4,7 @@ import { Router } from '@angular/router';
 import { of } from 'rxjs';
 import { delay } from 'rxjs/operators';
 import {AngularFireAuth} from '@angular/fire/auth';
+import {AngularFirestore, AngularFirestoreCollection} from '@angular/fire/firestore';
 
 @Injectable({
   providedIn: 'root'
@@ -11,8 +12,15 @@ import {AngularFireAuth} from '@angular/fire/auth';
 export class AuthService {
   // Only for demo purpose
   authenticated = false;
+  private famousCollection: AngularFirestoreCollection<any>;
 
-  constructor(private store: LocalStoreService, private router: Router, private angularFireAuth: AngularFireAuth) {
+  constructor(
+    private store: LocalStoreService,
+    private router: Router,
+    private angularFireAuth: AngularFireAuth,
+    private db: AngularFirestore,
+  ) {
+    this.famousCollection = db.collection<any>('ally');
     this.checkAuth();
   }
 
@@ -21,7 +29,8 @@ export class AuthService {
   }
 
   getuser() {
-    return of({});
+      const {uid} = this.angularFireAuth.auth.currentUser
+      return this.getAllyByAuthId(uid);
   }
 
   signin(credentials) {
@@ -47,4 +56,8 @@ export class AuthService {
               this.router.navigateByUrl('/sessions/signin');
           });
   }
+
+    getAllyByAuthId(authId) {
+        return this.famousCollection.ref.where('auth_uid', '==', authId).get();
+    }
 }
