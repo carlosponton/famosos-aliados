@@ -1,0 +1,17 @@
+{
+  "projects": {
+    "default": "allies-bc6d1"
+  },
+  "targets": {
+    "famosos-27f08": {
+      "hosting": {
+        "allies-bc6d1": [
+          "dist"
+        ],
+        "allies": [
+          "allies-bc6d1"
+        ]
+      }
+    }
+  }
+}

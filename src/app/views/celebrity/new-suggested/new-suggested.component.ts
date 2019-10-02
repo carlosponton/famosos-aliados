@@ -7,10 +7,11 @@ import {Subject} from 'rxjs';
 import {debounceTime} from 'rxjs/operators';
 import {AuthService} from '../../../shared/services/auth.service';
 
+
 @Component({
-  selector: 'app-new-suggested',
-  templateUrl: './new-suggested.component.html',
-  styleUrls: ['./new-suggested.component.scss'],
+    selector: 'app-new-suggested',
+    templateUrl: './new-suggested.component.html',
+    styleUrls: ['./new-suggested.component.scss'],
     changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class NewSuggestedComponent implements OnInit {
@@ -29,16 +30,16 @@ export class NewSuggestedComponent implements OnInit {
       private authService: AuthService
   ) { }
 
-  ngOnInit() {
-      this.buildFormBasic();
-      this.filteredProducts = this.famousService.getFamous().valueChanges();
-      this.filteredProducts = this.famousService.getFamous().valueChanges();
-              this.searchControl.valueChanges
-                  .pipe(debounceTime(200))
-                  .subscribe(value => {
-                      this.filerData(value);
-                  });
-  }
+    ngOnInit() {
+        this.buildFormBasic();
+        this.filteredProducts = this.famousService.getFamous().valueChanges();
+        this.filteredProducts = this.famousService.getFamous().valueChanges();
+        this.searchControl.valueChanges
+            .pipe(debounceTime(200))
+            .subscribe(value => {
+                this.filerData(value);
+            });
+    }
 
     buildFormBasic() {
         this.formBasic = this.fb.group({
@@ -89,7 +90,7 @@ export class NewSuggestedComponent implements OnInit {
     }
 
     getImage(event) {
-      this.photo = event;
+        this.photo = event;
     }
 
     submit() {

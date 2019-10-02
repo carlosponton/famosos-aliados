@@ -167,7 +167,7 @@
             height: $topbar-height-mobile;
             padding: 0 1.5rem;
             .logo {
-                width: 200px;
+                width: 100px;
             }
             .search-bar {
                 display: none;
@@ -193,6 +193,9 @@
 @media (max-width: 360px) {
     .layout-sidebar-large {
         .main-header {
+            .logo {
+                width: 100px;
+            }
             .menu-toggle {
                 margin: 0;
             }

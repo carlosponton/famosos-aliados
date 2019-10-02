@@ -1,55 +1,48 @@
-import {Component, OnInit} from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { FormControl } from '@angular/forms';
 import { debounceTime } from 'rxjs/operators';
+import { CelebrityService } from 'src/app/shared/services/celebrity.service';
+import { AuthService } from 'src/app/shared/services/auth.service';
+import { AllyService } from 'src/app/shared/services/ally.service';
 
 
 @Component({
-  selector: 'app-celebrity-suggested',
-  templateUrl: './celebrity-suggested.component.html',
-  styleUrls: ['./celebrity-suggested.component.scss']
+    selector: 'app-celebrity-suggested',
+    templateUrl: './celebrity-suggested.component.html',
+    styleUrls: ['./celebrity-suggested.component.scss']
 })
 export class CelebritySuggestedComponent implements OnInit {
     searchControl: FormControl = new FormControl();
+    ally;
     products;
     filteredProducts;
-  constructor(
-  ) { }
+    constructor(
+        private famousService: CelebrityService,
+        private allyService: AllyService,
+        private auth: AuthService,
+    ) { }
 
     ngOnInit() {
-        const products = [
-            {
-                name: 'Manager James',
-                email: 'managerjames@test.com',
-                instagram: 'managerjames',
-                facebook: 'managerjames',
-                twitter: 'managerjames',
-                youtube: 'managerjames'
-            },
-            {
-                name: 'Manager Falcao',
-                email: 'managerfalcao@test.com',
-                instagram: 'managerfalcao',
-                facebook: 'managerfalcao',
-                twitter: 'managerfalcao',
-                youtube: 'managerfalcao'
-            },
-            {
-                name: 'Manager Maluma',
-                email: 'managermaluma@test.com',
-                instagram: 'managermaluma',
-                facebook: 'managermaluma',
-                twitter: 'managermaluma',
-                youtube: 'managermaluma'
-            }
-        ];
-        this.products = products;
-        this.filteredProducts = products;
 
-        this.searchControl.valueChanges
-            .pipe(debounceTime(200))
-            .subscribe(value => {
-                this.filerData(value);
-            });
+        this.allyService.getCelebrityLeadById(this.auth.currentUser().uid).then(allySnap =>
+            allySnap.forEach(document => {
+                this.products = this.famousService.getFamousByAlly(document.data().id).valueChanges();
+                this.filteredProducts = this.famousService.getFamousByAlly(document.data().id).valueChanges();
+                this.filteredProducts = this.famousService.getFamousByAlly(document.data().id).valueChanges();
+                this.searchControl.valueChanges
+                    .pipe(debounceTime(200))
+                    .subscribe(value => {
+                        this.filerData(value);
+                    });
+
+                this.searchControl.valueChanges
+                    .pipe(debounceTime(200))
+                    .subscribe(value => {
+                        this.filerData(value);
+                    });
+            }));
+
+
     }
 
     filerData(val) {
@@ -64,7 +57,7 @@ export class CelebritySuggestedComponent implements OnInit {
             return;
         }
 
-        const rows = this.products.filter(function(d) {
+        const rows = this.products.filter(function (d) {
             for (let i = 0; i <= columns.length; i++) {
                 const column = columns[i];
                 // console.log(d[column]);

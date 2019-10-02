@@ -12,7 +12,7 @@
     <div class="row">
         <div class="col-md-4">
             <div class="form-group">
-                <input id="email" placeholder="Search Products" [formControl]="searchControl" class="form-control form-control-rounded" type="email">
+                <input id="email" placeholder="Buscar Famoso" [formControl]="searchControl" class="form-control form-control-rounded" type="email">
             </div>
         </div>
         <div class="col-md-8">
@@ -22,34 +22,38 @@
         </div>
         <div class="col-md-12">
             <div class="card  o-hidden">
-                <ngx-datatable
-                        style="height: 500px; box-shadow: none"
-                        class="material fullscreen"
-                        [columnMode]="'force'"
-                        [headerHeight]="50"
-                        [footerHeight]="50"
-                        [rowHeight]="60"
-                        [scrollbarV]="true"
-                        [rows]="filteredProducts">
-                    <ngx-datatable-column name="name">
+                    <ngx-datatable style="height: 500px; box-shadow: none" class="material fullscreen"
+                    [columnMode]="'force'" [headerHeight]="50" [footerHeight]="50" [rowHeight]="60" [scrollbarV]="true"
+                    [rows]="filteredProducts | async">
+                    <ngx-datatable-column name="avatar" [maxWidth]="120">
+                        <ng-template ngx-datatable-header-template>
+                            Avatar
+                        </ng-template>
+                        <ng-template ngx-datatable-cell-template let-value="value" let-row="row">
+                            <img height="40px" width="40px" style="border-radius: 50%" [src]="value" alt="">
+                        </ng-template>
+                    </ngx-datatable-column>
+                    <ngx-datatable-column name="nombre" >
                         <ng-template ngx-datatable-header-template>
                             Nombre
                         </ng-template>
                     </ngx-datatable-column>
-                    <ngx-datatable-column name="email" [width]="300">
+                    <ngx-datatable-column name="email" [width]="200">
                         <ng-template ngx-datatable-header-template>
                             Email
                         </ng-template>
                     </ngx-datatable-column>
-                    <ngx-datatable-column name="status">
+                    <ngx-datatable-column name="telefono">
                         <ng-template ngx-datatable-header-template>
-                            Estado
-                        </ng-template>
-                        <ng-template ngx-datatable-cell-template let-value="value" let-row="row">
-                            Activo
+                            Teléfono
                         </ng-template>
                     </ngx-datatable-column>
                     <ngx-datatable-column name="instagram">
+                        <ng-template ngx-datatable-header-template>
+                            Description
+                        </ng-template>
+                    </ngx-datatable-column>
+                    <ngx-datatable-column name="twitter">
                         <ng-template ngx-datatable-header-template>
                             Instagram
                         </ng-template>
@@ -57,11 +61,6 @@
                     <ngx-datatable-column name="facebook">
                         <ng-template ngx-datatable-header-template>
                             Facebook
-                        </ng-template>
-                    </ngx-datatable-column>
-                    <ngx-datatable-column name="twitter">
-                        <ng-template ngx-datatable-header-template>
-                            Twitter
                         </ng-template>
                     </ngx-datatable-column>
                     <ngx-datatable-column name="youtube">
