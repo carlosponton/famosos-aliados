@@ -21,25 +21,20 @@ export class CelebrityService {
     getFamousByAlly(UID) {
         return this.db.collection<any>('celebrity_lead', ref => {
             return ref
-                .where('ally_id', '==', UID)
-                .where('accepted', '==', false);
+                .where('ally_id', '==', UID);
         });
     }
 
     getCelebrityByAlly(UID) {
         return this.db.collection<any>('celebrity_lead', ref => {
             return ref
-                .where('ally_id', '==', UID)
-                .where('accepted', '==', true);
+                .where('ally_id', '==', UID);
         });
     }
-
-
 
     getFamous() {
         return this.famousCollection;
     }
-
 
     addSuggestion(suggested) {
         const id = this.db.createId();

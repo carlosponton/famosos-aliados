@@ -108,6 +108,7 @@ export class NewSuggestedComponent implements OnInit {
                     );
                     response.then(res => {
                         this.loading = false;
+                        this.router.navigate(['/celebrity/suggested']);
                         this.toastr.success('Famoso sugerido.', 'Success!', {progressBar: true});
                     });
                 });
