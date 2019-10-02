@@ -23,7 +23,7 @@ export class ImageCroppperComponent implements OnInit, AfterViewInit {
     @Output() getImage = new EventEmitter<string>();
 
     // tslint:disable-next-line:max-line-length
-    imageDestination = '';
+    imageDestination = 'https://dapp.dblog.org/img/default.jpg';
     private cropper: Cropper;
 
     constructor() {

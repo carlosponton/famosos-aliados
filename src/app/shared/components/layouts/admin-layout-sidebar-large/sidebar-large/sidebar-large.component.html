@@ -28,14 +28,6 @@
     </ul>
 </div>
 
-<div [ngClass]="{open: navService.sidebarState.childnavOpen}" class="sidebar-left-secondary rtl-ps-none" [perfectScrollbar]="{suppressScrollX: true}">
-    <header>
-        <h6>Apps</h6>
-        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p>
-    </header>
-    <ng-container *ngTemplateOutlet="menuTemplate;context:{parentItem: selectedItem}"></ng-container>
-</div>
-
 <ng-template #menuTemplate let-parentItem="parentItem">
   <ul class="childNav" appDropdown>
     <li *ngFor="let item of parentItem?.sub" appDropdownLink class="nav-item">

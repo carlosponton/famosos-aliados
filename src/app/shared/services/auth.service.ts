@@ -3,7 +3,7 @@ import { LocalStoreService } from './local-store.service';
 import { Router } from '@angular/router';
 import { of } from 'rxjs';
 import { delay } from 'rxjs/operators';
-import {AngularFireAuth} from '@angular/fire/auth';
+import { AngularFireAuth } from '@angular/fire/auth';
 
 @Injectable({
   providedIn: 'root'
@@ -17,7 +17,7 @@ export class AuthService {
   }
 
   checkAuth() {
-    this.authenticated = this.store.getItem('demo_login_status');
+    this.authenticated = this.store.getItem('famosos_login_status');
   }
 
   getuser() {
@@ -25,26 +25,31 @@ export class AuthService {
   }
 
   signin(credentials) {
-      const { email, password } = credentials;
-      return this.angularFireAuth
-          .auth
-          .signInWithEmailAndPassword(email, password)
-          .then(res => {
-              this.authenticated = true;
-              this.store.setItem('demo_login_status', true);
-              return res;
-          })
-          .catch(err => {
-              console.log('Something is wrong:', err.message);
-          });
+    const { email, password } = credentials;
+    return this.angularFireAuth
+      .auth
+      .signInWithEmailAndPassword(email, password)
+      .then(res => {
+        this.authenticated = true;
+        this.store.setItem('famosos_login_status', true);
+        return res;
+      })
+      .catch(err => {
+        console.log('Something is wrong:', err.message);
+      });
   }
+
+  currentUser() {
+    return this.angularFireAuth.auth.currentUser;
+  }
+
   signout() {
-      this.angularFireAuth
-          .auth
-          .signOut().then(res => {
-              this.authenticated = false;
-              this.store.setItem('demo_login_status', false);
-              this.router.navigateByUrl('/sessions/signin');
-          });
+    this.angularFireAuth
+      .auth
+      .signOut().then(res => {
+        this.authenticated = false;
+        this.store.setItem('famosos_login_status', false);
+        this.router.navigateByUrl('/sessions/signin');
+      });
   }
 }

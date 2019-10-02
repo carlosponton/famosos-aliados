@@ -1,15 +1,15 @@
-import {ChangeDetectionStrategy, Component, OnInit, ViewChild} from '@angular/core';
-import {FormBuilder, FormControl, FormGroup} from '@angular/forms';
-import {ToastrService} from 'ngx-toastr';
-import {CelebrityService} from '../../../shared/services/celebrity.service';
-import {Router} from '@angular/router';
-import {Subject} from 'rxjs';
-import {debounceTime} from 'rxjs/operators';
+import { ChangeDetectionStrategy, Component, OnInit, ViewChild } from '@angular/core';
+import { FormBuilder, FormControl, FormGroup } from '@angular/forms';
+import { ToastrService } from 'ngx-toastr';
+import { CelebrityService } from '../../../shared/services/celebrity.service';
+import { Router } from '@angular/router';
+import { Subject } from 'rxjs';
+import { debounceTime } from 'rxjs/operators';
 
 @Component({
-  selector: 'app-new-suggested',
-  templateUrl: './new-suggested.component.html',
-  styleUrls: ['./new-suggested.component.scss'],
+    selector: 'app-new-suggested',
+    templateUrl: './new-suggested.component.html',
+    styleUrls: ['./new-suggested.component.scss'],
     changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class NewSuggestedComponent implements OnInit {
@@ -20,23 +20,23 @@ export class NewSuggestedComponent implements OnInit {
     public croppieImage = new Subject<string>();
     products;
     filteredProducts;
-  constructor(
-      private fb: FormBuilder,
-      private toastr: ToastrService,
-      private famousService: CelebrityService,
-      private router: Router,
-  ) { }
+    constructor(
+        private fb: FormBuilder,
+        private toastr: ToastrService,
+        private famousService: CelebrityService,
+        private router: Router,
+    ) { }
 
-  ngOnInit() {
-      this.buildFormBasic();
-      this.filteredProducts = this.famousService.getFamous().valueChanges();
-      this.filteredProducts = this.famousService.getFamous().valueChanges();
-              this.searchControl.valueChanges
-                  .pipe(debounceTime(200))
-                  .subscribe(value => {
-                      this.filerData(value);
-                  });
-  }
+    ngOnInit() {
+        this.buildFormBasic();
+        this.filteredProducts = this.famousService.getFamous().valueChanges();
+        this.filteredProducts = this.famousService.getFamous().valueChanges();
+        this.searchControl.valueChanges
+            .pipe(debounceTime(200))
+            .subscribe(value => {
+                this.filerData(value);
+            });
+    }
 
     buildFormBasic() {
         this.formBasic = this.fb.group({
@@ -87,7 +87,7 @@ export class NewSuggestedComponent implements OnInit {
     }
 
     getImage(event) {
-      this.photo = event;
+        this.photo = event;
     }
 
     submit() {
@@ -96,11 +96,11 @@ export class NewSuggestedComponent implements OnInit {
         responsePhoto.newRef.then(() => {
             responsePhoto.ref.getDownloadURL().subscribe(avatar => {
                 const response = this.famousService.addSuggestion(
-                    {...this.formBasic.value, avatar}
+                    { ...this.formBasic.value, avatar }
                 );
                 response.then(res => {
                     this.loading = false;
-                    this.toastr.success('Famoso sugerido.', 'Success!', {progressBar: true});
+                    this.toastr.success('Famoso sugerido.', 'Success!', { progressBar: true });
                 });
             });
         });
@@ -118,7 +118,7 @@ export class NewSuggestedComponent implements OnInit {
             return;
         }
 
-        const rows = this.products.filter(function(d) {
+        const rows = this.products.filter(function (d) {
             for (let i = 0; i <= columns.length; i++) {
                 const column = columns[i];
                 // console.log(d[column]);

@@ -28,18 +28,6 @@
         </ul>
     </div>
     
-    <div [ngClass]="{open: navService.sidebarState.childnavOpen}" class="sidebar-left-secondary rtl-ps-none" perfectScrollbar>
-        <i class="sidebar-close i-Close" (click)="toggelSidebar()"></i>
-        <header>
-            <div class="logo">
-                <img src="./assets/images/logo-text.png" alt="">
-            </div>            
-            <h6>{{selectedItem.name}}</h6>
-            <p>{{selectedItem.description}}</p>
-        </header>
-        <ng-container *ngTemplateOutlet="menuTemplate;context:{parentItem: selectedItem}"></ng-container>
-    </div>
-    
     <ng-template #menuTemplate let-parentItem="parentItem">
       <ul class="childNav" appDropdown>
         <li *ngFor="let item of parentItem?.sub" appDropdownLink class="nav-item">

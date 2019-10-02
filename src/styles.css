@@ -1,5 +1,16 @@
 /* You can add global styles to this file, and also import other style files */
-.logo{
-    width: 100px; 
+
+.logo {
+    width: 100px;
 }
 
+.text-24 {
+    font-weight: bold;
+}
+
+.ngx-datatable.material .datatable-body .datatable-body-row .datatable-body-cell {
+    text-align: left;
+    color: rgba(0, 0, 0, 0.7);
+    font-size: 13px;
+    font-weight: 300;
+}

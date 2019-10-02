@@ -1,182 +1,22 @@
 <div class="row">
-    <div class="col-md-3">
+
+    <div class="col-md-3" *ngFor="let celebrity of celebrities$ | async">
         <div class="card card-profile-1 mb-4">
             <div class="card-body text-center">
                 <div class="avatar box-shadow-2 mb-3">
-                    <img src="./assets/images/faces/alejandro-benzaquen.jpg" alt="">
+                    <img [src]="celebrity.avatar" alt="">
                 </div>
-                <h5 class="m-0">Alejandro Benzaquen</h5>
-                <p class="mt-0">Influencer</p>
-                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Recusandae cumque.</p>
+                <h5 class="m-0">{{ celebrity.nombre }}</h5>
+                <p class="mt-0"></p>
+                <p></p>
                 <div class="card-socials-simple mt-4">
-                    <a href="">
-                        <i class="i-Linkedin-2"></i>
+                    <a [href]="'https://www.instagram.com/'+ celebrity.instagram" *ngIf="celebrity.instagram">
+                        <i class="i-Instagram"></i>
                     </a>
-                    <a href="">
+                    <a [href]="'https://www.facebook.com/'+ celebrity.facebook" *ngIf="celebrity.facebook">
                         <i class="i-Facebook-2"></i>
                     </a>
-                    <a href="">
-                        <i class="i-Twitter"></i>
-                    </a>
-                </div>
-            </div>
-        </div>
-    </div>
-    <div class="col-md-3">
-        <div class="card card-profile-1 mb-4">
-            <div class="card-body text-center">
-                <div class="avatar box-shadow-2 mb-3">
-                    <img src="./assets/images/faces/jeudiel-condado.jpg" alt="">
-                </div>
-                <h5 class="m-0">Jeudiel Condado</h5>
-                <p class="mt-0">Condado</p>
-                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Recusandae cumque.</p>
-                <div class="card-socials-simple mt-4">
-                    <a href="">
-                        <i class="i-Linkedin-2"></i>
-                    </a>
-                    <a href="">
-                        <i class="i-Facebook-2"></i>
-                    </a>
-                    <a href="">
-                        <i class="i-Twitter"></i>
-                    </a>
-                </div>
-            </div>
-        </div>
-    </div>
-    <div class="col-md-3">
-        <div class="card card-profile-1 mb-4">
-            <div class="card-body text-center">
-                <div class="avatar box-shadow-2 mb-3">
-                    <img src="./assets/images/faces/mayra-goni.jpg" alt="">
-                </div>
-                <h5 class="m-0">Mayra Goñi</h5>
-                <p class="mt-0">Actriz</p>
-                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Recusandae cumque.</p>
-                <div class="card-socials-simple mt-4">
-                    <a href="">
-                        <i class="i-Linkedin-2"></i>
-                    </a>
-                    <a href="">
-                        <i class="i-Facebook-2"></i>
-                    </a>
-                    <a href="">
-                        <i class="i-Twitter"></i>
-                    </a>
-                </div>
-            </div>
-        </div>
-    </div>
-    <div class="col-md-3">
-        <div class="card card-profile-1 mb-4">
-            <div class="card-body text-center">
-                <div class="avatar box-shadow-2 mb-3">
-                    <img src="./assets/images/faces/fernando-fiore.jpg" alt="">
-                </div>
-                <h5 class="m-0">Fernando Fiore</h5>
-                <p class="mt-0">Presentador</p>
-                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Recusandae cumque.</p>
-                <div class="card-socials-simple mt-4">
-                    <a href="">
-                        <i class="i-Linkedin-2"></i>
-                    </a>
-                    <a href="">
-                        <i class="i-Facebook-2"></i>
-                    </a>
-                    <a href="">
-                        <i class="i-Twitter"></i>
-                    </a>
-                </div>
-            </div>
-        </div>
-    </div>
-    <div class="col-md-3">
-        <div class="card card-profile-1 mb-4">
-            <div class="card-body text-center">
-                <div class="avatar box-shadow-2 mb-3">
-                    <img src="./assets/images/faces/victor-munoz.jpg" alt="">
-                </div>
-                <h5 class="m-0">Victor Munoz</h5>
-                <p class="mt-0">Cantante</p>
-                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Recusandae cumque.</p>
-                <div class="card-socials-simple mt-4">
-                    <a href="">
-                        <i class="i-Linkedin-2"></i>
-                    </a>
-                    <a href="">
-                        <i class="i-Facebook-2"></i>
-                    </a>
-                    <a href="">
-                        <i class="i-Twitter"></i>
-                    </a>
-                </div>
-            </div>
-        </div>
-    </div>
-<div class="col-md-3">
-    <div class="card card-profile-1 mb-4">
-        <div class="card-body text-center">
-            <div class="avatar box-shadow-2 mb-3">
-                <img src="./assets/images/faces/maluma.jpg" alt="">
-            </div>
-            <h5 class="m-0">Maluma</h5>
-            <p class="mt-0">Cantante</p>
-            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Recusandae cumque.</p>
-            <div class="card-socials-simple mt-4">
-                <a href="">
-                    <i class="i-Linkedin-2"></i>
-                </a>
-                <a href="">
-                    <i class="i-Facebook-2"></i>
-                </a>
-                <a href="">
-                    <i class="i-Twitter"></i>
-                </a>
-            </div>
-        </div>
-    </div>
-</div>
-    <div class="col-md-3">
-        <div class="card card-profile-1 mb-4">
-            <div class="card-body text-center">
-                <div class="avatar box-shadow-2 mb-3">
-                    <img src="./assets/images/faces/falcao.jpg" alt="">
-                </div>
-                <h5 class="m-0">Falcao</h5>
-                <p class="mt-0">Futbolista</p>
-                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Recusandae cumque.</p>
-                <div class="card-socials-simple mt-4">
-                    <a href="">
-                        <i class="i-Linkedin-2"></i>
-                    </a>
-                    <a href="">
-                        <i class="i-Facebook-2"></i>
-                    </a>
-                    <a href="">
-                        <i class="i-Twitter"></i>
-                    </a>
-                </div>
-            </div>
-        </div>
-    </div>
-    <div class="col-md-3">
-        <div class="card card-profile-1 mb-4">
-            <div class="card-body text-center">
-                <div class="avatar box-shadow-2 mb-3">
-                    <img src="./assets/images/faces/james.png" alt="">
-                </div>
-                <h5 class="m-0">James</h5>
-                <p class="mt-0">Futbolista</p>
-                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Recusandae cumque.</p>
-                <div class="card-socials-simple mt-4">
-                    <a href="">
-                        <i class="i-Linkedin-2"></i>
-                    </a>
-                    <a href="">
-                        <i class="i-Facebook-2"></i>
-                    </a>
-                    <a href="">
+                    <a [href]="'https://www.twitter.com/'+ celebrity.twitter" *ngIf="celebrity.twitter">
                         <i class="i-Twitter"></i>
                     </a>
                 </div>
