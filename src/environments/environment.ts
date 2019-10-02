@@ -5,13 +5,13 @@
 export const environment = {
   production: false,
     firebaseConfig: {
-        apiKey: 'AIzaSyDToRr0lgjxxTL8x43hkgSxZwHyzUXm9Ls',
-        authDomain: 'famosos-dev.firebaseapp.com',
-        databaseURL: 'https://famosos-dev.firebaseio.com',
-        projectId: 'famosos-dev',
-        storageBucket: 'famosos-dev.appspot.com',
-        messagingSenderId: '617643345116',
-        appId: '1:617643345116:web:8ad287c081657c897fe019'
+        apiKey: 'AIzaSyCErWKADSGWReKr3g3ehYBltDZqTRrh50g',
+        authDomain: 'famosos-27f08.firebaseapp.com',
+        databaseURL: 'https://famosos-27f08.firebaseio.com',
+        projectId: 'famosos-27f08',
+        storageBucket: 'famosos-27f08.appspot.com',
+        messagingSenderId: '403261214494',
+        appId: '1:403261214494:web:0303b0a73fc3e5e0'
     },
 };
 
