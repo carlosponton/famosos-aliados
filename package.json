@@ -4,7 +4,7 @@
   "license": "https://themeforest.net/licenses/terms/regular",
   "scripts": {
     "ng": "ng",
-    "start": "ng serve",
+    "start": "ng serve --proxy-config proxy.conf.json --port 4100",
     "build": "ng build",
     "test": "ng test",
     "lint": "ng lint",

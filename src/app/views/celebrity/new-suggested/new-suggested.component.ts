@@ -43,19 +43,13 @@ export class NewSuggestedComponent implements OnInit {
 
     buildFormBasic() {
         this.formBasic = this.fb.group({
-            nombre: '',
+            name: '',
             email: '',
-            telefono: '',
+            phone_number: '',
             instagram: '',
             twitter: '',
             facebook: '',
             youtube: '',
-            ig_followers: '',
-            facebook_followers: '',
-            twitter_followers: '',
-            youtube_followers: '',
-            precio: '',
-            cantidad_inicial: ''
         });
     }
 
@@ -98,20 +92,18 @@ export class NewSuggestedComponent implements OnInit {
         const responsePhoto = this.famousService.uploadPhoto(this.photo);
         responsePhoto.newRef.then(() => {
             responsePhoto.ref.getDownloadURL().subscribe(avatar => {
-                this.authService.getuser().then(value => {
-                    let allyId = '';
-                    value.forEach(document => {
-                        allyId = document.id;
+                const ally_id = this.authService.getuser();
+                    this.famousService.addSuggestion(
+                        {...this.formBasic.value, avatar, ally_id: ally_id}
+                    ).subscribe(response => {
+                        console.log(response);
                     });
-                    const response = this.famousService.addSuggestion(
-                        {...this.formBasic.value, avatar, ally_id: allyId}
-                    );
-                    response.then(res => {
+                    this.loading = false;
+                    /*response.then(res => {
                         this.loading = false;
                         this.router.navigate(['/celebrity/suggested']);
                         this.toastr.success('Famoso sugerido.', 'Success!', {progressBar: true});
-                    });
-                });
+                    });*/
             });
         });
     }

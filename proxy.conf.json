@@ -1,0 +1,14 @@
+{
+  "/famosos-27f08/us-central1/celebritiesApi/*": {
+    "target": "http://localhost:5000",
+    "secure": false,
+    "logLevel": "debug",
+    "changeOrigin": true
+  },
+  "/shopifyApi/*": {
+    "target": "https://us-central1-famosos-27f08.cloudfunctions.net",
+    "secure": true,
+    "logLevel": "debug",
+    "changeOrigin": true
+  }
+}

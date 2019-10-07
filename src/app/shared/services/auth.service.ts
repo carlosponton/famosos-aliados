@@ -28,7 +28,7 @@ export class AuthService {
 
   getuser() {
       const {uid} = this.angularFireAuth.auth.currentUser;
-      return this.getAllyByAuthId(uid);
+      return uid;
   }
 
   signin(credentials) {
